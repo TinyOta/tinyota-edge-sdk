@@ -1,0 +1,14 @@
+[Unit]
+Description=TinyOTA update agent
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/tinyota/tinyota.env
+ExecStart=/opt/tinyota/venv/bin/python /opt/tinyota/device-agent/main.py
+Restart=always
+RestartSec=30
+StateDirectory=tinyota
+
+[Install]
+WantedBy=multi-user.target

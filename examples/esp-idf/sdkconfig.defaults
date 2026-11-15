@@ -1,0 +1,11 @@
+# Two OTA app slots (ota_0 / ota_1, 1.875 MB each) + otadata
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+CONFIG_COMPILER_OPTIMIZATION_SIZE=y
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+# Roll back automatically if the new image never marks itself valid
+CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y
+# TLS: validate api.tinyota.xyz with the built-in CA bundle
+CONFIG_MBEDTLS_CERTIFICATE_BUNDLE=y
+# The FSM buffers the image in heap; give the FOTA task room
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
